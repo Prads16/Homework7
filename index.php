@@ -1,8 +1,5 @@
 <?php
 
-ini_set('display_errors', 'On');
-error_reporting(E_ALL);
-
 echo "<h1>Connecting to the database and retrieving value from the database</h1>";
 
 $db= new DatabaseConn();
