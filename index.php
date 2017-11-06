@@ -29,11 +29,33 @@ class DatabaseConn
         
     }
  
+     public function getRows()
+    {
+        try 
+        {
+            $query = 'SELECT * FROM accounts';
+            $statement = $this->data->prepare($query);
+            $statement->execute();
+            $alldata = $statement->fetchAll();
+            return $alldata;
+        } 
+
+        catch (PDOException $e) 
+        {
+            $err_message = $e -> getMessage();
+            echo "<p> Error occurred while connecting to the database: $err_message </p>" . '<br>';
+        }
+    }
+
     public function Disconnect()
     {
         $this->data = NULL;
         $this->isCon = FALSE;
     }
+
 }
+
+$result = $db->getRows();
+print_r($result);
 
 ?>
