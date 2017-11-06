@@ -33,7 +33,7 @@ class DatabaseConn
     {
         try 
         {
-            $query = 'SELECT * FROM accounts';
+            $query = 'SELECT * FROM accounts where id<6';
             $statement = $this->data->prepare($query);
             $statement->execute();
             $alldata = $statement->fetchAll();
