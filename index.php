@@ -39,9 +39,9 @@ class DatabaseConn
 	        echo '<br>';
 	        echo "The number of records are: $count" . '<br>' . '<br>';
             $alldata = $query->fetchAll();
-            return $alldata;
-        } 
-
+            return $alldata;   
+        }
+    
         catch (PDOException $e) 
         {
             $err_message = $e -> getMessage();
@@ -58,6 +58,34 @@ class DatabaseConn
 }
 
 $result = $db->getRows();
-print_r($result);
 
+echo "<table border = 1>";
+
+echo "<tr>
+      <th>ID</th>
+      <th>Email</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Phone</th>
+      <th>Birth Date</th>
+      <th>Gender</th>
+      <th>Password</th>
+      </tr>";
+
+foreach( $result as $rowdata) 
+ {
+       echo "<tr>";
+       echo "<td>" . $rowdata['id'] . "</td>";
+       echo "<td>" . $rowdata['email'] . "</td>";
+       echo "<td>" . $rowdata['fname'] . "</td>";
+       echo "<td>" . $rowdata['lname'] . "</td>";
+       echo "<td>" . $rowdata['phone'] . "</td>";
+       echo "<td>" . $rowdata['birthday'] . "</td>";
+       echo "<td>" . $rowdata['gender'] . "</td>";
+       echo "<td>" . $rowdata['password'] . "</td>";
+       echo "</tr>";
+}   
+
+echo "</table>";
+    
 ?>
