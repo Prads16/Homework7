@@ -33,10 +33,12 @@ class DatabaseConn
     {
         try 
         {
-            $query = 'SELECT * FROM accounts where id<6';
-            $statement = $this->data->prepare($query);
-            $statement->execute();
-            $alldata = $statement->fetchAll();
+            $query = $this->data->prepare('SELECT * FROM accounts where id<6');
+            $query->execute();
+            $count = $query->rowCount(); 
+	        echo '<br>';
+	        echo "The number of records are: $count" . '<br>' . '<br>';
+            $alldata = $query->fetchAll();
             return $alldata;
         } 
 
